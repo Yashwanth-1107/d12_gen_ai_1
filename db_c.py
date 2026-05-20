@@ -1,20 +1,20 @@
-import mysql.connector 
-import streamlit as st 
+import psycopg2
+import streamlit as st
 
-conn=mysql.connector.connect(
+conn = psycopg2.connect(
     host=st.secrets["Host_Name"],
     user=st.secrets["user"],
-    database=st.secrets["database"],
     password=st.secrets["password"],
+    database=st.secrets["database"],
     port=st.secrets["port"]
 )
 
-cursor=conn.cursor(dictionary=True) # 
+cursor = conn.cursor()
 
 # USERS TABLE
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100) UNIQUE,
     password VARCHAR(100)
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS users(
 # FILES TABLE
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS files(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     user_id INT,
     file_name VARCHAR(255),
     file_type VARCHAR(100),
