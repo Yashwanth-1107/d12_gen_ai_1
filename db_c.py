@@ -13,7 +13,7 @@ cursor = conn.cursor()
 
 # USERS TABLE
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS users(
+CREATE TABLE IF NOT EXISTS users3(
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100) UNIQUE,
