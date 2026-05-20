@@ -1,7 +1,7 @@
-import psycopg2
+import mysql.connector
 import streamlit as st
 
-conn = psycopg2.connect(
+conn = mysql.connector.connect(
     host=st.secrets["Host_Name"],
     user=st.secrets["user"],
     password=st.secrets["password"],
