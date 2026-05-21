@@ -37,3 +37,6 @@ CREATE TABLE IF NOT EXISTS files(
 conn.commit()
 
 print("Tables Created Successfully")
+
+#pip install streamlit mysql-connector-python
+
